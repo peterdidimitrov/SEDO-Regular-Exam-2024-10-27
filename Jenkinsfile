@@ -21,7 +21,6 @@ pipeline {
             post {
                 success {
                     echo 'Unit tests passed, proceeding to integration tests.'
-                    build job: 'Execute Integration Tests'
                 }
                 failure {
                     echo 'Unit tests failed, skipping integration tests.'
