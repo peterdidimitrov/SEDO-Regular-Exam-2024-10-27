@@ -14,13 +14,25 @@ pipeline {
             }
         }
 
-        stage('ExecuteUnitTests') {
+        stage('Execute Unit Tests') {
             steps {
                 bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --verbosity normal'
             }
+            post {
+                success {
+                    echo 'Unit tests passed, proceeding to integration tests.'
+                    build job: 'Execute Integration Tests'
+                }
+                failure {
+                    echo 'Unit tests failed, skipping integration tests.'
+                }
+            }
         }
 
-        stage('ExecuteIntegrationTests') {
+        stage('Execute Integration Tests') {
+            when {
+                expression { currentBuild.result == null || currentBuild.result == 'SUCCESS' }
+            }
             steps {
                 bat 'dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --no-build --verbosity normal'
             }
