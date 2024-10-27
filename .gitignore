@@ -1,0 +1,9 @@
+SoftUniBazar/bin
+SoftUniBazar/obj
+SoftUniBazar.Data/bin
+SoftUniBazar.Data/obj
+SoftUniBazar.Tests/bin
+SoftUniBazar.Tests/obj
+SoftUniBazar.IntegrationTests/bin
+SoftUniBazar.IntegrationTests/obj
+.vs/
