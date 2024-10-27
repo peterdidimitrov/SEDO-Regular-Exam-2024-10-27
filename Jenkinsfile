@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Install dependencies') {
+        stage('Restore dependencies') {
             steps {
                 bat 'dotnet restore'
             }
