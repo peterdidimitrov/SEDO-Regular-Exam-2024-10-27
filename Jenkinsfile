@@ -14,9 +14,15 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('ExecuteUnitTests') {
             steps {
-                bat 'dotnet test --no-build --verbosity normal'
+                bat 'dotnet test SoftUniBazar.Tests/SoftUniBazar.Tests.csproj --no-build --verbosity normal'
+            }
+        }
+
+        stage('ExecuteIntegrationTests') {
+            steps {
+                bat 'dotnet test SoftUniBazar.IntegrationTests/SoftUniBazar.IntegrationTests.csproj --no-build --verbosity normal'
             }
         }
     }
